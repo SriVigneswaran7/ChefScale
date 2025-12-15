@@ -130,11 +130,12 @@ I consciously employed Material 3 components and advanced Compose features to en
 * **Home Screen Layout:** Features a **two-row** `LazyRow` split using `.take()` and `.drop()` for efficient category browsing.
 
 | Home Screen | Help Screen | RecipeList Screen |
-|![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/HomeScreen.png?raw=true) | ![](HelpScreen.png) | ![](RecipeList.png) |
+|-------------|-------------|-------------------|
+|![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/HomeScreen.png?raw=true) | ![]() | ![]() |
 
 | Search Screen | Recipe Screen | Favourites Screen |
 |---------------|---------------|-------------------|
-| ![](HomeScreen.png) | ![](HelpScreen.png) | ![](FavouritesScreen.png) |
+| ![]() | ![]() | ![]() |
 
 ---
 
