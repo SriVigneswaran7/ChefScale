@@ -131,11 +131,11 @@ I consciously employed Material 3 components and advanced Compose features to en
 
 | Home Screen | Help Screen | RecipeList Screen |
 |-------------|-------------|-------------------|
-|![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/HomeScreen.png?raw=true) | ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/RecipeScreen.png?raw=true) | ![]() |
+|![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/HomeScreen.png?raw=true) | ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/HelpScreen.png?raw=true) | ![]() |
 
 | Search Screen | Recipe Screen | Favourites Screen |
 |---------------|---------------|-------------------|
-| ![]() | ![]() | ![]() |
+| ![]() | ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/RecipeScreen.png?raw=true) | ![]() |
 
 ---
 
