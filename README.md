@@ -19,10 +19,10 @@ ChefScale's core value is its **real-time ingredient portion scaling** for 16 di
 This project was built to show a substantial expansion, adding layers of complexity and value beyond a starter lab.
 
 | Feature | Core Functionality |
-| :--- | :--- |
+| ------- | ------------------ |
 | **Real-Time Portion Scaling** | Dynamically calculates ingredient quantities based on the user-controlled serving slider (1–10 servings). |
 | **Multithreaded Cooking Timer** | A background countdown timer using `viewModelScope` and `Job` control, ensuring zero UI freezing. |
-| **Persisted Favourites** | Users can save recipes to a private list using ViewModel state for quick access. |
+| **Favourites Sectiona** | Users can save recipes to a private list using ViewModel state for quick access. |
 | **Optimised Search & Filter** | Allows users to search by text and filter by category chips, improving content discoverability. |
 | **Adaptive UI & Stability** | The UI maintains state and prevents crashes when the device is rotated (Orientation Change). |
 | **Custom Theming** | Supports light/dark mode based on system settings and features custom typography for a branded, unique look. |
@@ -36,7 +36,19 @@ I implemented the **MVVM (Model-View-ViewModel)** architectural pattern to creat
 * **Architecture pattern:** MVVM (Model-View-ViewModel).
 * **Concurrency:** Handled using **Kotlin Coroutines** (detailed below).
 
-**Note on Project Timeline:** For administrative reasons, the core codebase was developed in a previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the application. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
+**Note on Project Timeline:** I started this building this app in the same project that I created to build the lab app. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the application. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
+
+### File Structure (OOD Separation):
+
+The architecture is reinforced by a clear file structure separating concerns:
+
+`model/`: Contains all Data Classes (`Recipe.kt`, `Ingredient.kt`) and Data Sources (`RecipeData.kt`).
+
+`viewmodel/`: Contains the single point of state management (`RecipeViewModel.kt`).
+
+`ui/screens/`: Houses all Composable View elements (e.g., `HomeScreen.kt`, `RecipeScreen.kt`).
+
+`ui/theme/`: Dedicated to branding elements (`Theme.kt`, `Type.kt`).
 
 ---
 
@@ -48,7 +60,7 @@ This logic calculates the necessary factor based on the default servings (assume
 
 ```kotlin
 // RecipeScreen.kt (Calculation of new quantity)
-val factor = servings.toDouble() / 2.0 
+val factor = servings.toDouble() / 2.0
 val newQuantity = ingredient.quantity * factor
 ```
 
@@ -69,9 +81,9 @@ The `updateSearch` function implements complex boolean filtering to check if a r
 ```kotlin
 // RecipeViewModel.kt (Core Filtering Logic)
 filteredRecipes = allRecipes.filter { recipe ->
-    val matchesQuery = recipe.title.contains(query, ignoreCase = true) //...
-    val matchesCategory = category == null || recipe.categories.contains(category)
-    matchesQuery && matchesCategory
+  val matchesQuery = recipe.title.contains(query, ignoreCase = true) //...
+  val matchesCategory = category == null || recipe.categories.contains(category)
+  matchesQuery && matchesCategory
 }
 ```
 
@@ -82,9 +94,9 @@ The theme toggle is managed by a simple boolean state in the ViewModel, which is
 ```kotlin
 // RecipeViewModel.kt (Theme State Logic)
 var isDarkTheme by mutableStateOf(false)
-    private set
+private set
 fun toggleTheme() {
-    isDarkTheme = !isDarkTheme
+  isDarkTheme = !isDarkTheme
 }
 ```
 
@@ -95,8 +107,8 @@ Retrieving dynamic arguments from the navigation stack requires careful handling
 ```kotlin
 // MainActivity.kt (Recipe Detail Navigation)
 composable("recipe_detail/{recipeId}") { backStackEntry ->
-    val recipeId = backStackEntry.arguments?.getString("recipeId")?.toIntOrNull() ?: 1
-    // ... proceed with non-null recipeId
+  val recipeId = backStackEntry.arguments?.getString("recipeId")?.toIntOrNull() ?: 1
+  // ... proceed with non-null recipeId
 }
 ```
 
@@ -106,8 +118,17 @@ State variables like `currentServings` are managed using the Kotlin property del
 
 ```kotlin
 // RecipeViewModel.kt (State Delegation)
-var currentServings by mutableStateOf(2) 
-    private set
+var currentServings by mutableStateOf(2)
+private set
+```
+
+#### 7. Ingredient Formatting (Readability)
+
+An extension function is used to ensure all dynamically scaled ingredient quantities are displayed cleanly with a maximum of one decimal place in the UI.
+
+```kotlin
+// Double Extension (Ensures clean UI display for scaling)
+fun Double.toOneDecimalPlace(): String = "%.1f".format(this)
 ```
 
 ---
@@ -128,6 +149,10 @@ I consciously employed Material 3 components and advanced Compose features to en
   ```
 * **Gradient Overlay:** I used the `Brush.verticalGradient` (in `SharedUIComponents.kt`) to apply a smooth, professional gradient fade underneath the text, resolving contrast issues on bright images.
 * **Home Screen Layout:** Features a **two-row** `LazyRow` split using `.take()` and `.drop()` for efficient category browsing.
+
+### App ScreenShots:
+
+The following table provides a visual overview of the application, demonstrating the professional, material-driven UI implemented across all six core screens
 
 | Home Screen | Help Screen | RecipeList Screen |
 |-------------|-------------|-------------------|
@@ -153,7 +178,11 @@ I consciously employed Material 3 components and advanced Compose features to en
 
 ## Multithreading / Background Tasks
 
-I implemented a robust **Cooking Timer** feature in `RecipeViewModel.kt` using structured coroutines to satisfy the requirement for meaningful background processing (LO2). The entire countdown runs off the main thread, preventing the UI from freezing.
+I implemented a robust **Cooking Timer** feature in `RecipeViewModel.kt` using structured coroutines to satisfy the requirement for meaningful background processing. The entire countdown runs off the main thread, preventing the UI from freezing.
+
+### Rationale for AndroidViewModel
+
+The `AndroidViewModel` was specifically required to handle the final timer action. It allows the `RecipeViewModel.kt` to securely access the necessary Application Context needed to integrate with the system service (`RingtoneManager`) and trigger the audible timer alert, demonstrating secure integration with Android APIs.
 
 ### 1. Coroutine Control (Job and Lifecycle)
 
@@ -163,11 +192,11 @@ The timer function, `toggleTimer()`, is responsible for starting the background 
 // RecipeViewModel.kt (Start/Cancel Logic)
 timerJob?.cancel() // CRITICAL: Stops any previous/concurrent job
 timerJob = viewModelScope.launch {
-    // Coroutine runs in the background
-    while (timerState.secondsRemaining > 0) {
-        delay(1000) // Pauses the coroutine for 1 second
-        // State updates trigger UI changes
-    }
+  // Coroutine runs in the background
+  while (timerState.secondsRemaining > 0) {
+    delay(1000) // Pauses the coroutine for 1 second
+    // State updates trigger UI changes
+  }
 }
 ```
 
@@ -214,8 +243,8 @@ The final action of the timer involves triggering an audible alert using the sys
 
 Generative AI tools (e.g., ChatGPT) were used as assistive aids in the development of this project. All AI-generated content was reviewed and modified where necessary, supporting my understanding without replacing it.
 
-| \# | Component | Prompts Used | My Understanding Gained |
-| :--- | :--- | :--- | :--- |
+| # | Component | Prompts Used | My Understanding Gained |
+| - | --------- | ------------ | ----------------------- |
 | 1 | Data Population | "Generate 16 diverse recipes including ingredients and steps in this specific Kotlin data class format." | Saved significant time on content creation, allowing me to focus on high-value implementation tasks. |
 | 2 | Notification Context | "How to play the default notification sound using `RingtoneManager` from within an `AndroidViewModel`?" | Highlighted the need for the **Application Context** and the **VIBRATE permission** in the `AndroidManifest.xml` for system service access. |
 | 3 | Timer Concurrency Bug | "Why does my countdown speed up when I pause and resume using Kotlin Coroutines?" | Diagnosed the race condition and taught me to use `timerJob?.cancel()` to ensure only one coroutine runs at a time. |
@@ -223,11 +252,12 @@ Generative AI tools (e.g., ChatGPT) were used as assistive aids in the developme
 | 5 | Gradient Text Overlay | "How to add a smooth black gradient fade to the bottom of an image in Jetpack Compose to improve text readability?" | Introduced the powerful **Brush.verticalGradient** feature, providing a professional solution to a complex UI contrast problem. |
 | 6 | Search Filter Reset | "How can I reset the text in a ViewModel's `searchQuery` when a category filter is clicked in a different screen?" | Learned to call `viewModel.updateSearch("", category)` to clear the query text while applying the new filter, solving a key logic conflict. |
 | 7 | Ingredient Formatting | "How do I format a Double variable to one decimal place in Kotlin?" | Provided the concise extension function syntax using `"%.${digits}f".format(this)`, ensuring a clean UI display for the scaling feature. |
-| 8 | State Delegation | "What is the correct way to use `mutableStateOf` inside a ViewModel so I can read it with an observer?" | Clarified the usage of the Kotlin **`by` property delegate** (e.g., `var servings by mutableStateOf(2)`) for state, which is the idiomatic Compose pattern. |
-| 9 | Multi-Row Category Layout | "How can I easily split a large Kotlin list into two equal parts for different horizontal lists in Compose?" | Suggested using the list functions **`.take(6)`** and **`.drop(6)`** for efficient data management for the two `LazyRow` components. |
-| 10 | Icon Alignment in TopBar | "How do I put an image and text in a row inside the `CenterAlignedTopAppBar` title slot in Compose?" | Showed how to wrap both components inside a **`Row(verticalAlignment = Alignment.CenterVertically)`** for perfect alignment and polish. |
-| 11 | Button Shape | "How can I give a standard Material 3 button rounded corners in Jetpack Compose?" | Provided the syntax to apply **`shape = RoundedCornerShape(12.dp)`** directly to the button composables, enhancing the app's modern aesthetics. |
-
+| 8 | State Delegation | "What is the correct way to use `mutableStateOf` inside a ViewModel so I can read it with an observer?" | Clarified the usage of the Kotlin `by` property delegate (e.g., `var servings by mutableStateOf(2)`) for state, which is the idiomatic Compose pattern. |
+| 9 | Multi-Row Category Layout | "How can I easily split a large Kotlin list into two equal parts for different horizontal lists in Compose?" | Suggested using the list functions `.take(6)` and `.drop(6)` for efficient data management for the two `LazyRow` components. |
+| 10 | Icon Alignment in TopBar | "How do I put an image and text in a row inside the `CenterAlignedTopAppBar` title slot in Compose?" | Showed how to wrap both components inside a `Row(verticalAlignment = Alignment.CenterVertically)` for perfect alignment and polish. |
+| 11 | Button Shape | "How can I give a standard Material 3 button rounded corners in Jetpack Compose?" | Provided the syntax to apply `shape = RoundedCornerShape(12.dp)` directly to the button composables, enhancing the app's modern aesthetics. |
+| 12 | Compose Preview Context | "Why do my composables crash in the preview window when they use a ViewModel or Navigation?" | Diagnosed the issue, emphasising that Compose Previews require a mocked or default parameter for components that rely on LocalContext or a ViewModel factory. |
+| 13 | List Index Protection | "How to safely handle fetching a recipe by ID from a list without risking an `IndexOutOfBoundsException` in Kotlin?" | Learned to use the safer collection function `allRecipes.firstOrNull { it.id == recipeId }` and handle the nullable result with the Elvis operator, improving data retrieval robustness. |
 ---
 
 ## Licence
