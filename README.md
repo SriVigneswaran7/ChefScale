@@ -228,11 +228,11 @@ The final action of the timer involves triggering an audible alert using the sys
 * **Jetpack Compose Official Documentation:** ([https://developer.android.com/jetpack/compose](https://developer.android.com/jetpack/compose))
   * *Used extensively for core UI implementation, state observation techniques, and compositional best practices.*
 * **Kotlin Coroutines Documentation:** ([https://kotlinlang.org/docs/coroutines-overview.html](https://kotlinlang.org/docs/coroutines-overview.html))
-  * *Fundamental reference for understanding asynchronous processing concepts, lifecycle control, and `Job` management for the cooking timer.*
+  * *Used for understanding asynchronous processing concepts, lifecycle control, and `Job` management for the cooking timer.*
 * **Material Design 3 Guidelines:** ([https://m3.material.io/](https://m3.material.io/))
   * *Used for principles applied in theming, colour usage, typography scaling, and overall component design.*
 * **Android Developers Guide: `RingtoneManager`:** ([https://developer.android.com/reference/android/media/RingtoneManager](https://developer.android.com/reference/android/media/RingtoneManager))
-  * *Specific reference for system service integration required for the final timer alert.*
+  * *Used for system service integration required for the timer alert.*
 * **Font Sources and Licensing:**
   * **Google Fonts:** Source for Fjalla One and Inter Tight fonts.
   * **Licence:** Both fonts are covered by the SIL Open Font License (OFL), permitting free use, modification, and distribution in software.
