@@ -200,10 +200,6 @@ class RecipeViewModel(app: Application) : AndroidViewModel(app) {
     private fun startOrResumeTimer(recipeMinutes: Int) {
         val totalSeconds = recipeMinutes * 60
 
-        // STARTING OR RESUMING:
-        // The timer start fresh if:
-        // 1. The timer is currently at 0.
-        // 2. OR the user switched to a different recipe with a different time requirement.
         if (timerState.secondsRemaining <= 0 || timerStartSeconds != totalSeconds) {
             // Reset and start fresh
             timerStartSeconds = totalSeconds
