@@ -3,7 +3,7 @@ package com.uog.expansionappredesign
 /**
  * Represents a single ingredient required for a recipe.
  *
- * This data class is the fundamental building block for the recipe's structure (Model layer).
+ * This data class is the fundamental building block for the recipe's structure.
  * It uses a Double for the quantity to allow for fractional measurements
  * which is essential for the portion scaling feature.
  *

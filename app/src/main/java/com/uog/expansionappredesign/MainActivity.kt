@@ -18,7 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.uog.expansionappredesign.ui.theme.ChefScaleTheme
 
 /**
- * The main activity and entry point for the ChefScale mobile app.
+ * The main activity and entry point for the ChefScale app.
  *
  * This activity sets up the Compose environment, initialises the core ViewModel,
  * and hosts the central navigation graph (NavHost).

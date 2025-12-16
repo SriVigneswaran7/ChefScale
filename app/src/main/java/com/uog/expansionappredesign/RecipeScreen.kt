@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -68,7 +69,7 @@ fun RecipeScreen(recipeId: Int, navController: NavHostController, viewModel: Rec
                     onClick = { navController.popBackStack() },
                     modifier = Modifier.padding(16.dp).background(Color.Black.copy(alpha=0.5f), MaterialTheme.shapes.small)
                 ) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.White)
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = Color.White)
                 }
                 // Gradient and Title Overlay
                 /**
