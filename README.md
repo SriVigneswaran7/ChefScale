@@ -36,19 +36,19 @@ I implemented the **MVVM (Model-View-ViewModel)** architectural pattern to creat
 * **Architecture pattern:** MVVM (Model-View-ViewModel).
 * **Concurrency:** Handled using **Kotlin Coroutines** (detailed below).
 
-**Note on Project Timeline:** I started this building this app in the same project that I created to build the lab app. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the application. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
+**Note on Project Timeline:** I started this building this app in the same project that I created to build the lab app as per th instructions in the workbook. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the application. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
 
 ### File Structure (OOD Separation):
 
 The architecture is reinforced by a clear file structure separating concerns:
 
-`model/`: Contains all Data Classes (`Recipe.kt`, `Ingredient.kt`) and Data Sources (`RecipeData.kt`).
+**`model`**: Contains all Data Classes (`Recipe.kt`, `Ingredient.kt`) and Data Sources (`RecipeData.kt`).
 
-`viewmodel/`: Contains the single point of state management (`RecipeViewModel.kt`).
+**`viewmodel`**: Contains the single point of state management (`RecipeViewModel.kt`).
 
-`ui/screens/`: Houses all Composable View elements (e.g., `HomeScreen.kt`, `RecipeScreen.kt`).
+**`ui/screen`**: Houses all Composable View elements (e.g., `HomeScreen.kt`, `RecipeScreen.kt`).
 
-`ui/theme/`: Dedicated to branding elements (`Theme.kt`, `Type.kt`).
+**`ui/theme`**: Dedicated to branding elements (`Theme.kt`, `Type.kt`).
 
 ---
 
