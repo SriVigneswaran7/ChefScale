@@ -8,7 +8,7 @@
 
 ## Overview
 
-This mobile app, **ChefScale**, is a **significant redesign and expansion** of a core module lab (**HealthyRecipes**), transforming the base app into a functional kitchen utility tool. The primary problem I set out to solve was the user frustration of manually scaling recipe ingredients when adjusting serving sizes.
+This mobile app, **ChefScale**, is a **significant redesign and expansion** of a core module lab app (**HealthyRecipes**), transforming the base app into a functional kitchen utility tool. The primary problem I set out to solve was the user frustration of manually scaling recipe ingredients when adjusting serving sizes.
 
 ChefScale's core value is its **real-time ingredient portion scaling** for 16 diverse recipes, complemented by a robust **multithreaded cooking timer** for task management. My goal was to demonstrate technical competence in applying **Object-Oriented Design (MVVM)**, creating a professional **Jetpack Compose UI**, and mastering **asynchronous processing** using Kotlin Coroutines.
 
@@ -16,13 +16,13 @@ ChefScale's core value is its **real-time ingredient portion scaling** for 16 di
 
 ## Features
 
-This project was built to show a substantial expansion, adding layers of complexity and value beyond a starter lab.
+This project was built to show a substantial expansion, adding layers of complexity and value beyond the starter lab app.
 
 | Feature | Core Functionality |
 | ------- | ------------------ |
 | **Real-Time Portion Scaling** | Dynamically calculates ingredient quantities based on the user-controlled serving slider (1–10 servings). |
 | **Multithreaded Cooking Timer** | A background countdown timer using `viewModelScope` and `Job` control, ensuring zero UI freezing. |
-| **Favourites Sectiona** | Users can save recipes to a private list using ViewModel state for quick access. |
+| **Favourites Section** | Users can save recipes to a private list using ViewModel state for quick access. |
 | **Optimised Search & Filter** | Allows users to search by text and filter by category chips, improving content discoverability. |
 | **Adaptive UI & Stability** | The UI maintains state and prevents crashes when the device is rotated (Orientation Change). |
 | **Custom Theming** | Supports light/dark mode based on system settings and features custom typography for a branded, unique look. |
@@ -36,7 +36,7 @@ I implemented the **MVVM (Model-View-ViewModel)** architectural pattern to creat
 * **Architecture pattern:** MVVM (Model-View-ViewModel).
 * **Concurrency:** Handled using **Kotlin Coroutines** (detailed below).
 
-**Note on Project Timeline:** I started this building this app in the same project that I created to build the lab app as per th instructions in the workbook. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the application. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
+**Note on Project Timeline:** I started this building this app in the same project that I created to build the lab app as per the instructions in the workbook. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the app. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
 
 ### File Structure (OOD Separation):
 
