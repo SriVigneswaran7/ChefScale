@@ -36,7 +36,7 @@ I implemented the **MVVM (Model-View-ViewModel)** architectural pattern to creat
 * **Architecture pattern:** MVVM (Model-View-ViewModel).
 * **Concurrency:** Handled using **Kotlin Coroutines** (detailed below).
 
-**Note on Project Timeline:** I started this building this app in the same project that I created to build the lab app as per the instructions in the workbook. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the app. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
+**Note on Project Timeline:** I started building this app in the same project that I created to build the lab app as per the instructions in the workbook. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the app. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
 
 ### File Structure (OOD Separation):
 
@@ -129,6 +129,19 @@ An extension function is used to ensure all dynamically scaled ingredient quanti
 ```kotlin
 // Double Extension (Ensures clean UI display for scaling)
 fun Double.toOneDecimalPlace(): String = "%.1f".format(this)
+```
+
+#### 8. Help/Guide Screen
+
+To ensure a high-quality User Experience (UX), I implemented a structured help screen. This uses a `LazyColumn` for smooth scrolling of instructions, satisfying the rubric's requirement for user guidance. The user can access this screen by clicking the "?" icon in top-left corner of the Home Screen.
+
+```kotlin
+var expandedHelpSection by mutableStateOf<String?>(null)
+private set
+
+fun toggleHelpSection(section: String) {
+expandedHelpSection = if (expandedHelpSection == section) null else section
+}
 ```
 
 ---
@@ -270,11 +283,11 @@ Educational Community License 2.0 [ECL]
 
 I have reflected on several areas where the application could be further enhanced to meet or exceed industry standards if time permitted:
 
-- **Persistent Data Storage (Room/DataStore):** Implementing a database solution would allow user preferences (favorites and dark mode settings) to persist across sessions.
+- **Persistent Data Storage (Room/DataStore):** Implementing a database solution would allow user preferences (favourites and dark mode settings) to persist across sessions.
 
 - **Dedicated Notification Channel:** Creating a proper Android Notification Channel for the timer alert would give users fine-grained control over the alert sound and importance.
 
-- **Haptic Feedback:** Adding subtle haptic feedback using the VIBRATE service for key interactions, such as adding a recipe to favorites.
+- **Haptic Feedback:** Adding subtle haptic feedback using the VIBRATE service for key interactions, such as adding a recipe to favourites.
 
 - **Dynamic Theming:** Allowing the user to select an accent colour that overrides the default Material 3 palette.
 
