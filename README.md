@@ -1,14 +1,11 @@
 # Mobile App Project - ChefScale
 
 **Author:** Sri Vigneswaran Arumugaraj
-
-**Student ID:** 001419849
-
 ---
 
 ## Overview
 
-This mobile app, **ChefScale**, is a **significant redesign and expansion** of a core module lab app (**HealthyRecipes**), transforming the base app into a functional kitchen utility tool. The primary problem I set out to solve was the user frustration of manually scaling recipe ingredients when adjusting serving sizes.
+This mobile app, **ChefScale**, is a significant refactor and expansion of an initial prototype (HealthyRecipes), transforming the base app into a functional kitchen utility tool. The primary problem I set out to solve was the user frustration of manually scaling recipe ingredients when adjusting serving sizes.
 
 ChefScale's core value is its **real-time ingredient portion scaling** for 16 diverse recipes, complemented by a robust **multithreaded cooking timer** for task management. My goal was to demonstrate technical competence in applying **Object-Oriented Design (MVVM)**, creating a professional **Jetpack Compose UI**, and mastering **asynchronous processing** using Kotlin Coroutines.
 
@@ -36,7 +33,7 @@ I implemented the **MVVM (Model-View-ViewModel)** architectural pattern to creat
 * **Architecture pattern:** MVVM (Model-View-ViewModel).
 * **Concurrency:** Handled using **Kotlin Coroutines** (detailed below).
 
-**Note on Project Timeline:** I started building this app in the same project that I created to build the lab app as per the instructions in the workbook. Hence, the core codebase was developed in the previous project environment (`com.uog.ChefScale`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the app. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
+**Note on Project Timeline:** I started building this app in the same project that I created to build the lab app as per the instructions in the workbook. Hence, the core codebase was developed in the previous project environment (`legacy package structure`) before being copied into this final repository (`com.uog.expansionappredesign`). This constraint means the commits provided are condensed and do not reflect the actual time spent developing the app. Crucially, the code maintains a fully separated and decoupled MVVM architecture in this final package structure.
 
 ### File Structure (OOD Separation):
 
@@ -169,11 +166,11 @@ The following table provides a visual overview of the application, demonstrating
 
 | Home Screen | Help Screen | RecipeList Screen |
 |-------------|-------------|-------------------|
-|![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/HomeScreen.png?raw=true) | ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/HelpScreen.png?raw=true) | ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/RecipeListScreen.png?raw=true) |
+|![](https://github.com/SriVigneswaran7/ChefScale/blob/main/HomeScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/HelpScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/RecipeListScreen.png?raw=true) |
 
 | Favourites Screen | Search Screen | Recipe Screen |
 |---------------|---------------|-------------------|
-| ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/FavouritesScreen.png?raw=true) | ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/SearchScreen.png?raw=true) | ![](https://github.com/UniOfGreenwich/expansion-redesign-app-SriVigneswaran7/blob/main/RecipeScreen.png?raw=true) |
+| ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/FavouritesScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/SearchScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/RecipeScreen.png?raw=true) |
 
 ---
 
@@ -228,7 +225,7 @@ The final action of the timer involves triggering an audible alert using the sys
 
 1.  **Clone this repository:**
     ```bash
-    git clone git@github.com:uniofgreenwich/ELEE1146_CW_SriVigneswaran7
+    git clone https://github.com/SriVigneswaran7/ChefScale.git
     ```
 2.  **Open the project** in Android Studio Giraffe or newer.
 3.  Connect a device or launch an emulator.
@@ -294,3 +291,5 @@ I have reflected on several areas where the application could be further enhance
 - **Deep Linking:** Implementing deep links so external shared recipe links navigate directly to the correct detail screen.
 
 ---
+
+*This repository is for portfolio and demonstration purposes only. If you are a student currently enrolled in a similar module, please ensure you adhere to your institution's academic integrity policies before referencing this code.*
