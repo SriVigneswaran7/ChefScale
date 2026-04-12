@@ -1,5 +1,11 @@
 # Mobile App Project - ChefScale
 
+![Kotlin](https://img.shields.io/badge/Kotlin-Language-7F52FF)
+![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-UI-4285F4)
+![MVVM](https://img.shields.io/badge/MVVM-Architecture-orange)
+![Coroutines](https://img.shields.io/badge/Coroutines-Concurrency-blueviolet)
+![License](https://img.shields.io/badge/License-ECL_2.0-success)
+
 **Author:** Sri Vigneswaran Arumugaraj
 ---
 
