@@ -172,11 +172,11 @@ The following table provides a visual overview of the application, demonstrating
 
 | Home Screen | Help Screen | RecipeList Screen |
 |-------------|-------------|-------------------|
-|![](https://github.com/SriVigneswaran7/ChefScale/blob/main/HomeScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/HelpScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/RecipeListScreen.png?raw=true) |
+|![](assets/HomeScreen.png) | ![](assets/HelpScreen.png) | ![](assets/RecipeListScreen.png) |
 
 | Favourites Screen | Search Screen | Recipe Screen |
 |---------------|---------------|-------------------|
-| ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/FavouritesScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/SearchScreen.png?raw=true) | ![](https://github.com/SriVigneswaran7/ChefScale/blob/main/RecipeScreen.png?raw=true) |
+| ![](assets/FavouritesScreen.png) | ![](assets/SearchScreen.png) | ![](assets/RecipeScreen.png) |
 
 ---
 
